@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!-- Adapted from w3schools.com -->
+<html>
+<head>
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<title>Financial Manager Landing Page</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link
+	href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANVZyMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANVZyMDVWcv82ZH/ENVZyEAAAAAAAAAAAAAAAAAAAAAAAAAAANVZyQDVWchAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1VnL/SrLK/zVadvg2ZoJbAAAAADVWciA2ZYCQNV978DVWcv81VnJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANVZy/13j+f9W2vD/PXaR/TVhfOI0Xnr/LavG/yXM6P8zZYH/NVZyEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADVWcv9d4/n/XeP5/1vi+P9Atcz/LdDq/yfQ6/8nyuX/NmWA2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1Wnb4Wd/1/13j+f9d4/n/P93z/zvc8v8v1e7/LLDL/zVgfHkAAAAAAAAAAAAAAAAAAAAAAAAAADVWchA1YXzQSaC5/Xrm+/9x5fv/X+P5/z/d8/873PL/L9Xu/zF/m/w1VnJAAAAAAAAAAAAAAAAAAAAAADVWcjA1XnruWMbd/3/n/P+B5/z/gef8/3rm+/9M4PX/O9zy/y/V7v8rt9L/NWF84jVWchAAAAAAAAAAADZmgls1W3f6T8ff/3jm+/+B5/z/hOf8/4Tn/P+B5/z/dOX6/zvc8v862/H/K9Ls/y+ivf81YXy/AAAAAAAAAAA2a4ZMNmWA2Dhfev9Ckqv7UMLZ/3Dh9v+c6/z/i+j8/4Dn+/9E3vT/O9zy/zvc8v8x0er/MYai/TZifp4AAAAAAAAAAAAAAAAAAAAANVZyQDZlgJA4Y374guj7/47o/P945vv/SLDI/zZwi+81XHj7NVZy/zVWcv81VnL/NVZyEAAAAAAAAAAAAAAAAAAAAAAAAAAANmJ+nlzH3f+L6fz/cuP5/zhjfvg1VnJANVZyIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADVWcjA/fpn9b+X7/1CZsv41VnJQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANWF84kqpwv82ZH/EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADVgfHk1W3f5NVZyIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANVZyMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAPP/AADxxwAA8AcAAPAHAADwDwAA4A8AAMAHAACAAwAAgAEAAPABAAD4PwAA/H8AAPx/AAD+/wAA//8AAA=="
+	rel="icon" type="image/x-icon" />
+<link rel="stylesheet" type="text/css"
+	href="/Project1/resources/css/displaystyle.css">
+<style>
+table {
+	border-spacing: 0;
+	width: 100%;
+	border: 1px solid #ddd;
+}
+
+th {
+	cursor: pointer;
+}
+
+th, td {
+	text-align: left;
+	padding: 16px;
+}
+
+tr:nth-child(even) {
+	background-color: #ffffff
+}
+
+tr:nth-child(odd) {
+	background-color: #f2f2f2
+}
+</style>
+</head>
+<body>
+	<form class="bg" action="/Project1/api/forwarding/home">
+		<br />
+		<table id="myReimbTable" class="table">
+			<thead>
+				<tr>
+					<!--When a header is clicked, run the sortTable function, with a parameter, 0 for sorting by names, 1 for sorting by country:-->
+				</tr>
+				<tr>
+					<th scope="col">Primary Key</th>
+					<th scope="col">Amount</th>
+					<th onclick="sortTable(1)" scope="col">Submitted</th>
+					<th onclick="sortTable(2)" scope="col">Resolved</th>
+					<th scope="col">Description</th>
+					<th scope="col">Receipt</th>
+					<th onclick="sortTable(5)" scope="col">Author</th>
+					<th onclick="sortTable(6)" scope="col">Resolver</th>
+					<th onclick="sortTable(7)" scope="col">Status ID</th>
+					<th onclick="sortTable(8)" scope="col">Type ID</th>
+					<th scope="col">Approve</th>
+					<th scope="col">Deny</th>
+				</tr>
+			</thead>
+			<tbody id="reimbTableBody">
+			</tbody>
+		</table>
+		<table class="table">
+			<thead>
+				<tr>
+				</tr>
+				<tr>
+					<th scope="col">Reference Table</th>
+					<th scope="col">Entry 1</th>
+					<th scope="col">Entry 2</th>
+					<th scope="col">Entry 3</th>
+					<th scope="col">Entry 4</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td scope="col">Status ID</td>
+					<td>1 | Pending</td>
+					<td>2 | Denied</td>
+					<td>3 | Approved</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td scope="col">Type ID</td>
+					<td>1 | Lodging</td>
+					<td>2 | Travel</td>
+					<td>3 | Food</td>
+					<td>4 | Other</td>
+				</tr>
+			</tbody>
+		</table>
+		<button class="btn btn-info btn-block"
+			onClick="window.location.reload();">Refresh Page to View
+			Changes</button>
+	</form>
+	<form action="/Project1/api/forwarding/login">
+		<button class="btn btn-secondary btn-block" type="submit">Return
+			to Login Page.</button>
+	</form>
+	<script>
+		function sortTable(n) {
+			var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+			table = document.getElementById("myReimbTable");
+			switching = true;
+			//Set the sorting direction to ascending:
+			dir = "asc";
+			/*Make a loop that will continue until
+			no switching has been done:*/
+			while (switching) {
+				//start by saying: no switching is done:
+				switching = false;
+				rows = table.rows;
+				/*Loop through all table rows (except the
+				first, which contains table headers):*/
+				for (i = 2; i < (rows.length - 1); i++) {
+					//start by saying there should be no switching:
+					shouldSwitch = false;
+					/*Get the two elements you want to compare,
+					one from current row and one from the next:*/
+					console.log(rows[i]);
+					console.log(rows[i].getElementsByTagName("TD")[n]);
+					console.log(rows[i].getElementsByTagName("table")[n]);
+					x = rows[i].getElementsByTagName("TD")[n];
+					y = rows[i + 1].getElementsByTagName("TD")[n];
+					/*check if the two rows should switch place,
+					based on the direction, asc or desc:*/
+					if (dir == "asc") {
+						if (x.innerHTML.toLowerCase() > y.innerHTML
+								.toLowerCase()) {
+							//if so, mark as a switch and break the loop:
+							shouldSwitch = true;
+							break;
+						}
+					} else if (dir == "desc") {
+						if (x.innerHTML.toLowerCase() < y.innerHTML
+								.toLowerCase()) {
+							//if so, mark as a switch and break the loop:
+							shouldSwitch = true;
+							break;
+						}
+					}
+				}
+				if (shouldSwitch) {
+					/*If a switch has been marked, make the switch
+					and mark that a switch has been done:*/
+					rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+					switching = true;
+					//Each time a switch is done, increase this count by 1:
+					switchcount++;
+				} else {
+					/*If no switching has been done AND the direction is "asc",
+					set the direction to "desc" and run the while loop again.*/
+					if (switchcount == 0 && dir == "asc") {
+						dir = "desc";
+						switching = true;
+					}
+				}
+			}
+		}
+	</script>
+	<script type="text/javascript" src="/Project1/resources/js/homepage.js"></script>
+</body>
+</html>
