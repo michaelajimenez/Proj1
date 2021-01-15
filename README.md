@@ -23,13 +23,13 @@ authorized to approve and deny requests for expense reimbursement.
 
 # Features
 - Employee
-> Login
-> Add Reimbursement Request
+  - Login
+  - Add Reimbursement Request
 - Finance Manager
-> All of the Above
-> View Pending Requests
-> Approve or Deny Reimbursements
-> View Updated Status
+  - All of the Above
+  - View Pending Requests
+  - Approve or Deny Reimbursements
+  - View Updated Status
 
 # Usage
 
