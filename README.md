@@ -6,6 +6,9 @@
 # Technologies Used
 - Java 8
 - PostgreSQL
+- HTML
+- CSS
+- JavaScript
 - Apache Tomcat v9.0
 
 # Features
